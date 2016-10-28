@@ -103,7 +103,7 @@ koa.listen(3000);
 
 # Example app
 
-There's an example application available in the `example/` folder in the root of
+There's an example application available in the [example](https://github.com/jiripospisil/ashley-koa/tree/example/example) folder in the root of
 the repository. It contains a slightly extended version of the app described
 above.
 
