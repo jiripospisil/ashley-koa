@@ -29,9 +29,11 @@ available across all incoming requests. It's the place to bind objects whose
 life time is bound to the application, not to a particular web request.
 
 ```javascript
-const container = require('ashley')({
+const Ashley = require('ashley');
+const container = new Ashley({
   root: __dirname
 });
+
 const integration = require('ashley-koa');
 
 container.object('Config', 'src/config');
@@ -52,7 +54,6 @@ should be bound to the incoming request they are associated with.
 const koa = require('koa')();
 
 integration.initialize(koa, container, requestContainer => {
-  requestContainer.instance('User', 'src/user');
   requestContainer.instance('UserRegistry', 'src/user_registry', ['DatabaseConnection']);
   requestContainer.instance('CurrentUser', 'src/current_user');
 
@@ -93,8 +94,8 @@ That's important because the function will be called for every request.
 
 ```javascript
 // Use the binded function as middleware
-koa.use(integration.middleware('BasicAuth');
-koa.use(integration.middleware('IndexRoute');
+koa.use(integration.middleware('BasicAuth'));
+koa.use(integration.middleware('IndexRoute'));
 
 koa.listen(3000);
 ```
