@@ -2,7 +2,7 @@
 
 module.exports = {
   mongodb: {
-    uri: 'mongodb://localhost:37017/ashley-koa-test',
+    uri: 'mongodb://localhost:27017/ashley-koa-test',
     options: {}
   },
 
