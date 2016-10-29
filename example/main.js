@@ -5,11 +5,11 @@ const koa = require('koa')();
 const uuid = require('node-uuid');
 const co = require('co');
 
+const integration = require('ashley-koa');
+
 const container = new Ashley({
   root: __dirname
 });
-
-const integration = require('ashley-koa');
 
 // Configure instances that should be alive across requests
 container.object('Config', require('./config'));

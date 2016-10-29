@@ -13,6 +13,8 @@
     "basic-auth": "^1.0.4",
     "bcryptjs": "^2.3.0",
     "bunyan": "^1.8.4",
+    "co": "^4.6.0",
+    "koa": "^1.2.4",
     "mongodb": "^2.2.11",
     "node-uuid": "^1.4.7",
     "thunkify": "^2.1.2"
