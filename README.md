@@ -8,6 +8,7 @@ that with minimal effort.
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Example app](#example-app)
 - [How it works](#how-it-works)
 - [Recommendations](#recommendations)
 - [License](#license)
@@ -99,6 +100,12 @@ koa.use(integration.middleware('IndexRoute'));
 
 koa.listen(3000);
 ```
+
+# Example app
+
+There's an example application available in the [example](https://github.com/jiripospisil/ashley-koa/tree/example/example) folder in the root of
+the repository. It contains a slightly extended version of the app described
+above.
 
 # How it works
 
