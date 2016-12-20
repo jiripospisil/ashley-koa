@@ -16,7 +16,7 @@ that with minimal effort.
 # Installation
 
 ```bash
-npm install ashley-koa
+npm install ashley ashley-koa
 ```
 
 # Usage
@@ -52,14 +52,15 @@ Next, it's necessary to use the integration and bind objects whose life time
 should be bound to the incoming request they are associated with.
 
 ```javascript
-const koa = require('koa')();
+const Koa = require('koa');
+const app = new Koa();
 
-integration.initialize(koa, container, requestContainer => {
+integration.initialize(app, container, requestContainer => {
   requestContainer.instance('UserRegistry', 'src/user_registry', ['DatabaseConnection']);
   requestContainer.instance('CurrentUser', 'src/current_user');
 
-  requestContainer.function('BasicAuth', 'src/basic_auth', [Ashley._, 'CurrentUser', 'UserRegistry']);
-  requestContainer.function('IndexRoute', 'src/routes/index', [Ashley._, 'CurrentUser']);
+  requestContainer.function('BasicAuth', 'src/basic_auth', [Ashley._, Ashley._, 'CurrentUser', 'UserRegistry']);
+  requestContainer.function('IndexRoute', 'src/routes/index', [Ashley._, Ashley._, 'CurrentUser']);
 });
 ```
 
@@ -84,12 +85,12 @@ The `IndexRoute` middleware can thus look as follows.
 ```javascript
 // src/routes/index
 
-module.exports = function *(next, currentUser) {
-  this.body = `Hello ${currentUser.name}!`;
+module.exports = async function(ctx, next, currentUser) {
+  ctx.body = `Hello ${currentUser.name}!`;
 };
 ```
 
-Finally, it's time to actually `use` the binded functions. Notice the functions
+Finally, it's time to actually `use` the bound functions. Notice the functions
 are passed to Koa outside of the user-defined function passed to `initialize`.
 That's important because the function will be called for every request.
 
@@ -122,10 +123,10 @@ otherwise they would be added more than once.
 
 It's often the case with Koa applications that the current state of the
 application (e.g. the current user) is stored in the current context
-(`this.user`). Further, it's very common to see Koa middlewares to actually
-contain the business logic of the application. While it certainly works, an
-alternative is to treat the fact that the data comes from a web request as an
-implementation detail.
+(`this.user` / `this.state.user`). Further, it's very common to see Koa
+middlewares to actually contain the business logic of the application. While it
+certainly works, an alternative is to treat the fact that the data comes from a
+web request as an implementation detail.
 
 In this model, middlewares act as mediators. They have access to the data coming
 in from web requests and they depend on Ashley to inject the necessary objects
@@ -137,13 +138,13 @@ passing it into an object which knows what to do with it.
 // routes/articles/create
 const boom = require('koa-boom');
 
-module.exports = function *create(next, currentUser, articleRegistry) {
+module.exports = async function create(ctx, next, currentUser, articleRegistry) {
   try {
     articleRegistry.add(currentUser, this.params);
-    this.status = 201;
+    ctx.status = 201;
   } catch (e) {
     // Handle the error or let it bubble up the chain.
-    boom.badRequest(this, e.message);
+    boom.badRequest(ctx, e.message);
   }
 };
 ```

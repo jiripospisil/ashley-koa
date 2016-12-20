@@ -33,29 +33,4 @@ describe('Integration', function() {
       expect(called).to.equal(5);
     });
   });
-
-  describe('.middleware', function() {
-    it('resolves the function and calls it with the correct context', function *() {
-      let called = 0;
-
-      const fn = integration.middleware('testing');
-      const ctx = {
-        __ashley: {
-          resolve: function *(name) {
-            called++;
-            expect(name).to.equal('testing');
-
-            return function *(...args) {
-              called++;
-              expect(this).to.equal(ctx);
-              expect(args).to.deep.equal([1, 2, 3]);
-            };
-          }
-        }
-      };
-
-      yield fn.call(ctx, 1, 2, 3);
-      expect(called).to.equal(2);
-    });
-  });
 });
