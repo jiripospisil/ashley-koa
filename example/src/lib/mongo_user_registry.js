@@ -1,10 +1,8 @@
 'use strict';
 
 const _ = require('lodash');
-const thunkify = require('thunkify');
-const bcrypt = require('bcryptjs');
 
-const compare = thunkify(bcrypt.compare);
+const compare = require('./util/compare');
 const User = require('./user');
 
 class MongoUserRegistry {
@@ -12,10 +10,10 @@ class MongoUserRegistry {
     this._connection = connection;
   }
 
-  *findByUsernameAndPassword(username, password) {
-    const user = yield this._connection.findOne('users', { username });
+  async findByUsernameAndPassword(username, password) {
+    const user = await this._connection.findOne('users', { username });
 
-    if (user && (yield compare(password, user.password_digest))) {
+    if (user && (await compare(password, user.password_digest))) {
       return new User(_.omit(user, ['password_digest']));
     }
   }
