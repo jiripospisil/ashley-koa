@@ -4,7 +4,7 @@
   "description": "Ashley's integration with the Koa framework.",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test mocha",
+    "test": "cross-env NODE_ENV=test mocha --harmony-async-await",
     "pretest": "cross-env NODE_ENV=test eslint ."
   },
   "author": "Jiri Pospisil <jiri@sensible.io> (http://jpospisil.com)",
