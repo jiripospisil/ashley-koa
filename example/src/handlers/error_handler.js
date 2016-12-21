@@ -1,10 +1,10 @@
 'use strict';
 
-module.exports = function *(next, logger) {
+module.exports = async function(ctx, next, logger) {
   try {
-    yield next;
+    await next();
   } catch (e) {
     logger.error(e);
-    this.body = 'An internal error occured!';
+    ctx.body = 'An internal error occured!';
   }
 };

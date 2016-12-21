@@ -13,24 +13,25 @@ function validate(parent, fn) {
 module.exports.initialize = function(koa, parent, fn) {
   validate(parent, fn);
 
-  koa.use(function *(next) {
-    this.__ashley = parent.createChild();
+  koa.use(async function(ctx, next) {
+    ctx.__ashley = parent.createChild();
 
-    fn(this.__ashley);
+    fn(ctx.__ashley);
 
     try {
-      yield next;
-      yield this.__ashley.shutdown();
+      await next();
+      await ctx.__ashley.shutdown();
     } catch (e) {
-      yield this.__ashley.shutdown();
+      await ctx.__ashley.shutdown();
       throw e;
     }
   });
 };
 
 module.exports.middleware = function(name) {
-  return function *(...args) {
-    const fn = yield this.__ashley.resolve(name);
-    yield fn.call(this, ...args);
+  return async function(...args) {
+    const ctx = args[0];
+    const fn = await ctx.__ashley.resolve(name);
+    await fn(...args);
   };
 };

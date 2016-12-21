@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = function *(next, currentUser) {
+module.exports = async function(ctx, next, currentUser) {
   // Use a templating engine!
-  this.type = 'text/html';
-  this.body = `Hello ${currentUser.username}!<br><a href="${this.protocol}://nope:nope@${this.host}">Logout</a>`;
+  ctx.type = 'text/html';
+  ctx.body = `Hello ${currentUser.username}!<br><a href="${ctx.protocol}://nope:nope@${ctx.host}">Logout</a>`;
 };

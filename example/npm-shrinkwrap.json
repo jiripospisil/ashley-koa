@@ -9,9 +9,6 @@
       "version": "1.3.0"
     },
     "ashley": {
-      "version": "0.0.1"
-    },
-    "ashley-koa": {
       "version": "0.0.2"
     },
     "balanced-match": {
@@ -19,48 +16,45 @@
       "optional": true
     },
     "basic-auth": {
-      "version": "1.0.4"
+      "version": "1.1.0"
     },
     "bcryptjs": {
-      "version": "2.3.0"
+      "version": "2.4.0"
     },
     "brace-expansion": {
       "version": "1.1.6",
       "optional": true
     },
     "bson": {
-      "version": "0.5.6"
+      "version": "1.0.1"
     },
     "buffer-shims": {
       "version": "1.0.0"
     },
     "bunyan": {
-      "version": "1.8.4"
+      "version": "1.8.5"
     },
     "co": {
       "version": "4.6.0"
-    },
-    "composition": {
-      "version": "2.3.0"
     },
     "concat-map": {
       "version": "0.0.1",
       "optional": true
     },
     "content-disposition": {
-      "version": "0.5.1"
+      "version": "0.5.2"
     },
     "content-type": {
       "version": "1.0.2"
     },
     "cookies": {
-      "version": "0.6.1"
+      "version": "0.6.2"
     },
     "core-util-is": {
       "version": "1.0.2"
     },
     "debug": {
-      "version": "2.2.0"
+      "version": "2.4.5"
     },
     "deep-equal": {
       "version": "1.0.1"
@@ -75,7 +69,7 @@
       "version": "1.0.4"
     },
     "dtrace-provider": {
-      "version": "0.7.1",
+      "version": "0.8.0",
       "optional": true
     },
     "ee-first": {
@@ -102,18 +96,24 @@
       "dependencies": {
         "http-errors": {
           "version": "1.4.0"
+        },
+        "inherits": {
+          "version": "2.0.1"
         }
       }
     },
     "http-errors": {
-      "version": "1.5.0"
+      "version": "1.5.1"
     },
     "inflight": {
       "version": "1.0.6",
       "optional": true
     },
     "inherits": {
-      "version": "2.0.1"
+      "version": "2.0.3"
+    },
+    "is-generator-function": {
+      "version": "1.0.6"
     },
     "isarray": {
       "version": "1.0.0"
@@ -122,25 +122,34 @@
       "version": "1.0.1"
     },
     "koa": {
-      "version": "1.2.4"
+      "version": "2.0.0-alpha.7"
     },
     "koa-compose": {
-      "version": "2.5.1"
+      "version": "3.2.1"
+    },
+    "koa-convert": {
+      "version": "1.2.0"
     },
     "koa-is-json": {
       "version": "1.0.0"
     },
+    "koa-router": {
+      "version": "7.0.1"
+    },
     "lodash": {
-      "version": "4.16.4"
+      "version": "4.17.2"
     },
     "media-typer": {
       "version": "0.3.0"
     },
+    "methods": {
+      "version": "1.1.2"
+    },
     "mime-db": {
-      "version": "1.24.0"
+      "version": "1.25.0"
     },
     "mime-types": {
-      "version": "2.1.12"
+      "version": "2.1.13"
     },
     "minimatch": {
       "version": "3.0.3",
@@ -155,17 +164,17 @@
       "optional": true
     },
     "moment": {
-      "version": "2.15.2",
+      "version": "2.17.1",
       "optional": true
     },
     "mongodb": {
-      "version": "2.2.11"
+      "version": "2.2.16"
     },
     "mongodb-core": {
-      "version": "2.0.13"
+      "version": "2.1.2"
     },
     "ms": {
-      "version": "0.7.1"
+      "version": "0.7.2"
     },
     "mv": {
       "version": "2.1.1",
@@ -182,9 +191,6 @@
     "negotiator": {
       "version": "0.6.1"
     },
-    "node-uuid": {
-      "version": "1.4.7"
-    },
     "on-finished": {
       "version": "2.3.0"
     },
@@ -200,6 +206,14 @@
     "path-is-absolute": {
       "version": "1.0.1",
       "optional": true
+    },
+    "path-to-regexp": {
+      "version": "1.7.0",
+      "dependencies": {
+        "isarray": {
+          "version": "0.0.1"
+        }
+      }
     },
     "process-nextick-args": {
       "version": "1.0.7"
@@ -225,10 +239,10 @@
       "version": "5.3.0"
     },
     "setprototypeof": {
-      "version": "1.0.1"
+      "version": "1.0.2"
     },
     "statuses": {
-      "version": "1.3.0"
+      "version": "1.3.1"
     },
     "string_decoder": {
       "version": "0.10.31"
@@ -237,10 +251,13 @@
       "version": "2.1.2"
     },
     "type-is": {
-      "version": "1.6.13"
+      "version": "1.6.14"
     },
     "util-deprecate": {
       "version": "1.0.2"
+    },
+    "uuid": {
+      "version": "3.0.1"
     },
     "vary": {
       "version": "1.1.0"

@@ -2,22 +2,22 @@
 
 const auth = require('basic-auth');
 
-module.exports = function *(next, currentUser, userRegistry, logger) {
+module.exports = async function(ctx, next, currentUser, userRegistry, logger) {
   logger.info('Authenticating the coming user...');
 
-  const credentials = auth(this);
+  const credentials = auth(ctx);
 
   if (credentials) {
-    const user = yield userRegistry.findByUsernameAndPassword(credentials.name, credentials.pass);
+    const user = await userRegistry.findByUsernameAndPassword(credentials.name, credentials.pass);
     if (user) {
       currentUser.set(user);
       logger.info(`Recognized "${currentUser.username}"`);
-      return yield next;
+      return await next();
     }
     logger.info('Invalid credentials given.');
   }
 
-  this.status = 401;
-  this.set('WWW-Authenticate', 'Basic');
-  this.type = 'html';
+  ctx.status = 401;
+  ctx.set('WWW-Authenticate', 'Basic');
+  ctx.type = 'html';
 };

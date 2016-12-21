@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function *(next, logger) {
-  logger.info(`Starting ${this.method} ${this.path} for ${this.ip}...`);
+module.exports = async function(ctx, next, logger) {
+  logger.info(`Starting ${ctx.method} ${ctx.path} for ${ctx.ip}...`);
   const now = Date.now();
-  yield next;
-  logger.info(`Completed ${this.status} in ${Date.now() - now}ms.`);
+  await next();
+  logger.info(`Completed ${ctx.status} in ${Date.now() - now}ms.`);
 };

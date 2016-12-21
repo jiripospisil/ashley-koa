@@ -17,11 +17,11 @@ The available users are stored in the `config` file (`bob/bob`, `alice/alice`)
 and are either seeded on startup (MongoDB) or used directly from memory.
 
 Keep in mind that the app serves as usage demonstration. Using a container for
-an application of this size would probably be unnecessary. See [the
+an application of this size is unnecessary. See [the
 documentation](https://github.com/jiripospisil/ashley#should-i-use-ashley-for-projects-of-any-size)
 for more info.
 
 Note that as there's no standard way of signing out users when using Basic Auth,
 the logout might be a bit wonky depending the used web browser and might ask for
-the credentials every time. Navigating to the address directly seems to make it
-work properly.
+the credentials every time after signing out. Navigating to the address directly
+(instead of refreshing) seems to make it work properly again.

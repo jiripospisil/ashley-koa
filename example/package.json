@@ -6,17 +6,17 @@
   "license": "ISC",
   "main": "main.js",
   "scripts": {
-    "start": "node main.js | bunyan -o short"
+    "start": "node --harmony-async-await main.js | bunyan -o short"
   },
   "dependencies": {
-    "ashley-koa": "0.0.2",
+    "ashley": ">= 0.0.2 < 1.0.0",
     "basic-auth": "^1.0.4",
     "bcryptjs": "^2.3.0",
     "bunyan": "^1.8.4",
-    "co": "^4.6.0",
-    "koa": "^1.2.4",
+    "koa": "2.0.0-alpha.7",
+    "koa-router": "^7.0.1",
     "mongodb": "^2.2.11",
-    "node-uuid": "^1.4.7",
-    "thunkify": "^2.1.2"
+    "thunkify": "^2.1.2",
+    "uuid": "^3.0.1"
   }
 }

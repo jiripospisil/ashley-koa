@@ -8,36 +8,36 @@ class MongoConnection {
     this._logger = logger.child({ component: 'MongoConnection' });
   }
 
-  *initialize() {
+  async initialize() {
     this._logger.info('Connecting to the database...');
-    this._connection = yield MongoClient.connect(
+    this._connection = await MongoClient.connect(
         this._config.mongodb.uri, this._config.mongodb.options);
     this._logger.info('Connected.');
-    yield this.seed();
+    await this.seed();
   }
 
-  *deinitialize() {
+  async deinitialize() {
     this._logger.info('Closing the database connection');
 
     if (this._connection) {
-      yield this._connection.close();
+      await this._connection.close();
     }
 
     this._logger.info('Closed.');
   }
 
-  *findOne(collectionName, ...args) {
+  async findOne(collectionName, ...args) {
     const collection = this._connection.collection(collectionName);
-    return yield collection.findOne(...args);
+    return await collection.findOne(...args);
   }
 
-  *seed() {
+  async seed() {
     // Add some sample data
     this._logger.info('Seeding the database.');
 
     const users = this._connection.collection('users');
-    yield users.removeMany();
-    yield users.insertMany(this._config.users);
+    await users.removeMany();
+    await users.insertMany(this._config.users);
 
     this._logger.info('Seeded.');
   }
