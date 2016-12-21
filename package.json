@@ -1,6 +1,6 @@
 {
   "name": "ashley-koa",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Ashley's integration with the Koa framework.",
   "main": "index.js",
   "scripts": {
