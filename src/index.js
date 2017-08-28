@@ -20,10 +20,8 @@ module.exports.initialize = function(koa, parent, fn) {
 
     try {
       await next();
+    } finally {
       await ctx.__ashley.shutdown();
-    } catch (e) {
-      await ctx.__ashley.shutdown();
-      throw e;
     }
   });
 };
