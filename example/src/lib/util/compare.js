@@ -6,7 +6,7 @@ module.exports = function compare(password, digest) {
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, digest, (err, res) => {
       if (err) {
-        reject(err);
+        return reject(err);
       }
       resolve(res);
     });
