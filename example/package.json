@@ -6,7 +6,7 @@
   "license": "ISC",
   "main": "main.js",
   "scripts": {
-    "start": "node --harmony-async-await main.js | bunyan -o short"
+    "start": "node main.js | bunyan -o short"
   },
   "dependencies": {
     "ashley": "^1.0.0",
